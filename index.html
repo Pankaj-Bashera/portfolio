@@ -3,9 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modern Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .pixel-border {
+            box-shadow: 
+                0 0 0 2px currentColor,
+                4px 0 0 2px currentColor,
+                -4px 0 0 2px currentColor,
+                0 4px 0 2px currentColor,
+                0 -4px 0 2px currentColor;
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .glow {
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+    </style>
 </head>
-<body>
-    
+<body class="bg-gray-950 text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-gray-950/80 backdrop-blur-sm border-b-2 border-violet-500/30 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold text-violet-400 flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-violet-500 flex items-center justify-center">
+                        <span class="text-gray-950 font-bold">pb</span>
+                    </div>
+                    <span class="hidden sm:inline">_</span>
+                </a>
+                <ul class="flex items-center space-x-6">
+                    <li><a href="#about" class="text-sm hover:text-violet-400 transition">[ABOUT]</a></li>
+                    <li><a href="#projects" class="text-sm hover:text-violet-400 transition">[WORK]</a></li>
+                    <li><a href="#contact" class="text-sm hover:text-violet-400 transition">[CONTACT]</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-16 grid-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/20 to-gray-950"></div>
+        <div class="max-w-4xl text-center relative z-10">
+            <div class="mb-6 text-violet-400 text-sm">&gt; WELCOME TO MY PORTFOLIO_</div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight glow">
+                PANKAJ BASHERA<span class="text-violet-400">.</span>
+            </h1>
+            <div class="text-lg md:text-xl text-gray-400 mb-12 font-normal">
+                <span class="text-violet-400">&lt;</span>CS Undergraduate | DSA • System Design • Web & ML Projects<span class="text-violet-400">/&gt;</span>
+                <br/>
+                <span class="text-sm">CRAFTING DIGITAL EXPERIENCES WITH CODE</span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#projects" class="inline-flex items-center space-x-2 bg-violet-500 text-gray-950 px-6 py-3 font-bold hover:bg-violet-400 transition-all hover:translate-x-1">
+                    <span>[VIEW_PROJECTS]</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#contact" class="inline-flex items-center space-x-2 border-2 border-violet-500 text-violet-400 px-6 py-3 font-bold hover:bg-violet-500/10 transition">
+                    <span>[GET_IN_TOUCH]</span>
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-gray-900 border-t-2 border-violet-500/30">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-violet-400">
+                <span class="text-gray-500">//</span> ABOUT_ME
+            </h2>
+            
+            <!-- Intro -->
+            <div class="mb-12 border-l-4 border-violet-500 pl-6">
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    <span class="text-violet-400">&gt;</span> Full-stack developer with 5+ years of experience building scalable web applications and leading development teams.
+                </p>
+                <p class="text-gray-400 text-sm">
+                    Passionate about writing clean code, solving complex problems, and creating exceptional user experiences that drive business growth.
+                </p>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-violet-400">
+                    <span class="text-gray-500">//</span> WORK_EXPERIENCE
+                </h3>
+                <div class="space-y-6">
+                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
+                            <div>
+                                <h4 class="text-lg font-bold text-violet-400">SENIOR FULL-STACK DEVELOPER</h4>
+                                <p class="text-gray-400 text-sm">Tech Innovations Inc.</p>
+                            </div>
+                            <span class="text-gray-500 text-sm mt-2 md:mt-0">[2022 - PRESENT]</span>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Leading development of enterprise SaaS platform serving 50K+ users. Architected microservices infrastructure, improved performance by 40%, and mentored junior developers.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
+                            <div>
+                                <h4 class="text-lg font-bold text-violet-400">FULL-STACK DEVELOPER</h4>
+                                <p class="text-gray-400 text-sm">Digital Solutions Ltd.</p>
+                            </div>
+                            <span class="text-gray-500 text-sm mt-2 md:mt-0">[2020 - 2022]</span>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Developed client-facing web applications using React and Node.js. Implemented CI/CD pipelines and reduced deployment time by 60%.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
+                            <div>
+                                <h4 class="text-lg font-bold text-violet-400">JUNIOR DEVELOPER</h4>
+                                <p class="text-gray-400 text-sm">StartUp Hub</p>
+                            </div>
+                            <span class="text-gray-500 text-sm mt-2 md:mt-0">[2019 - 2020]</span>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Built responsive web interfaces and RESTful APIs. Collaborated with design team to implement pixel-perfect UI components.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-violet-400">
+                    <span class="text-gray-500">//</span> EDUCATION
+                </h3>
+                <div class="space-y-6">
+                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="graduation-cap" class="w-6 h-6 text-violet-400 mt-1"></i>
+                            <div class="flex-1">
+                                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-violet-400">B.S. COMPUTER SCIENCE</h4>
+                                        <p class="text-gray-400 text-sm">University of Technology</p>
+                                    </div>
+                                    <span class="text-gray-500 text-sm mt-2 md:mt-0">[2015 - 2019]</span>
+                                </div>
+                                <p class="text-gray-400 text-sm">
+                                    Focus on Software Engineering and Web Development • GPA: 3.8/4.0
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="award" class="w-6 h-6 text-violet-400 mt-1"></i>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-bold text-violet-400">CERTIFICATIONS</h4>
+                                <ul class="text-gray-400 text-sm space-y-1 mt-2">
+                                    <li><span class="text-violet-400">•</span> AWS Certified Solutions Architect</li>
+                                    <li><span class="text-violet-400">•</span> Google Professional Cloud Developer</li>
+                                    <li><span class="text-violet-400">•</span> Meta Front-End Developer Professional</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-violet-400">
+                    <span class="text-gray-500">//</span> TECH_STACK
+                </h3>
+                
+                <div class="space-y-6">
+                    <!-- Frontend -->
+                    <div>
+                        <h4 class="text-sm font-bold text-violet-400 mb-3 flex items-center space-x-2">
+                            <i data-lucide="code" class="w-4 h-4"></i>
+                            <span>[FRONTEND]</span>
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REACT</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">NEXTJS</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">TYPESCRIPT</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">TAILWIND</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REDUX</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">VUE</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">JAVASCRIPT</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">HTML</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">CSS</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div>
+                        <h4 class="text-sm font-bold text-violet-400 mb-3 flex items-center space-x-2">
+                            <i data-lucide="server" class="w-4 h-4"></i>
+                            <span>[BACKEND]</span>
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">NODEJS</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">EXPRESS</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">PYTHON</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">DJANGO</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">POSTGRESQL</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">MONGODB</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REDIS</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">GRAPHQL</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REST</span>
+                        </div>
+                    </div>
+
+                    <!-- DevOps & Tools -->
+                    <div>
+                        <h4 class="text-sm font-bold text-violet-400 mb-3 flex items-center space-x-2">
+                            <i data-lucide="cloud" class="w-4 h-4"></i>
+                            <span>[DEVOPS]</span>
+                        </h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">DOCKER</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">KUBERNETES</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">AWS</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">GCP</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">CI/CD</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">TERRAFORM</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">GITHUB</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">NGINX</span>
+                            <span class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">JENKINS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 grid-bg border-t-2 border-violet-500/30">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-violet-400">
+                <span class="text-gray-500">//</span> SELECTED_PROJECTS
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
+                    <div class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                        <i data-lucide="shopping-cart" class="w-16 h-16 text-violet-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-violet-400">[E-COMMERCE_PLATFORM]</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Full-featured online store with payment integration and real-time inventory management.
+                        </p>
+                        <div class="flex items-center space-x-4 text-xs">
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span>DEMO</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>CODE</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
+                    <div class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                        <i data-lucide="list-checks" class="w-16 h-16 text-violet-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-violet-400">[TASK_MANAGER]</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Collaborative workspace for teams with real-time updates and project tracking.
+                        </p>
+                        <div class="flex items-center space-x-4 text-xs">
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span>DEMO</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>CODE</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
+                    <div class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                        <i data-lucide="bar-chart-3" class="w-16 h-16 text-violet-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-violet-400">[ANALYTICS_DASHBOARD]</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Real-time data visualization with interactive charts and comprehensive reports.
+                        </p>
+                        <div class="flex items-center space-x-4 text-xs">
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span>DEMO</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>CODE</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
+                    <div class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                        <i data-lucide="users" class="w-16 h-16 text-violet-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-violet-400">[SOCIAL_NETWORK]</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Community platform with messaging, content sharing, and user engagement features.
+                        </p>
+                        <div class="flex items-center space-x-4 text-xs">
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span>DEMO</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>CODE</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-gray-900 border-t-2 border-violet-500/30">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-violet-400">
+                <span class="text-gray-500">//</span> LET'S_CONNECT
+            </h2>
+            <p class="text-xl text-gray-400 mb-12">
+                <span class="text-violet-400">&gt;</span> OPEN FOR NEW PROJECTS AND COLLABORATIONS
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-6">
+                <a href="mailto:pankajbashera1211@gmail.com" target="_blank" class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    <span>EMAIL</span>
+                </a>
+                <a href="https://www.linkedin.com/in/pankajb1" target="_blank" class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    <span>LINKEDIN</span>
+                </a>
+                <a href="https://github.com/Pankaj-Bashera" target="_blank" class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                    <span>GITHUB</span>
+                </a>
+                <a href="https://x.com/PankajB9621" target="_blank" class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                    <span>TWITTER</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
