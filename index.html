@@ -4,674 +4,628 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PANKAJ BASHERA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Space Mono', monospace;
-        }
-
-        .pixel-border {
-            box-shadow:
-                0 0 0 2px currentColor,
-                4px 0 0 2px currentColor,
-                -4px 0 0 2px currentColor,
-                0 4px 0 2px currentColor,
-                0 -4px 0 2px currentColor;
-        }
-
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        .glow {
-            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-        }
-    </style>
+    <title>Pankaj's Portfolio</title>
+    <!-- Modern Fonts matching the hacker/developer aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-950 text-gray-100">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-gray-950/80 backdrop-blur-sm border-b-2 border-violet-500/30 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="#" class="text-xl font-bold text-violet-400 flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-violet-500 flex items-center justify-center">
-                        <span class="text-gray-950 font-bold">pb</span>
-                    </div>
-                    <span class="hidden sm:inline">_</span>
-                </a>
-                <ul class="flex items-center space-x-6">
-                    <li><a href="#about" class="text-sm hover:text-violet-400 transition">[ABOUT]</a></li>
-                    <li><a href="#projects" class="text-sm hover:text-violet-400 transition">[WORK]</a></li>
-                    <li><a href="#contact" class="text-sm hover:text-violet-400 transition">[CONTACT]</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body>
+    <canvas id="interactionCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999;"></canvas>
+    <!-- Lateral Side Decorations -->
+    <div class="side-decor left-decor">
+        <span class="decor-item" data-speed="0.15">&lt;/&gt;</span>
+        <span class="decor-item" data-speed="-0.08">{ }</span>
+        <span class="decor-item" data-speed="0.12">#</span>
+    </div>
+    <div class="side-decor right-decor">
+        <span class="decor-item" data-speed="-0.12">01</span>
+        <span class="decor-item" data-speed="0.1">/*</span>
+        <span class="decor-item" data-speed="-0.15">~</span>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center px-6 pt-16 grid-bg relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/20 to-gray-950"></div>
-        <div class="max-w-4xl text-center relative z-10">
-            <div class="mb-6 text-violet-400 text-sm">
-                <span class="inline-flex items-center gap-2">
-                    <i data-lucide="map-pin" class="w-4 h-4"></i>
-                    Based in Haldwani, India
-                </span>
+    <div class="layout-wrapper">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="prompt">~/</span><span class="cursor"></span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight glow">
-                PANKAJ BASHERA<span class="text-violet-400">.</span>
-            </h1>
-            <div class="text-lg md:text-xl text-gray-400 mb-12 font-normal">
-                <span class="text-violet-400">&lt;</span>Software Engineering Student • AI + Web Development<span
-                    class="text-violet-400">/&gt;</span>
-                <br />
-                <span class="text-sm">Strong in DSA • Building real-world ML & Web projects </span>
+            <div class="nav-links">
+                <a href="#about" class="active">About</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#cp">CP</a>
             </div>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projects"
-                    class="inline-flex items-center space-x-2 bg-violet-500 text-gray-950 px-6 py-3 font-bold hover:bg-violet-400 transition-all hover:translate-x-1">
-                    <span>[VIEW_PROJECTS]</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-                <a href="#contact"
-                    class="inline-flex items-center space-x-2 border-2 border-violet-500 text-violet-400 px-6 py-3 font-bold hover:bg-violet-500/10 transition">
-                    <span>[GET_IN_TOUCH]</span>
-                    <i data-lucide="mail" class="w-4 h-4"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 bg-gray-900 border-t-2 border-violet-500/30">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-violet-400">
-                <span class="text-gray-500">//</span> ABOUT_ME
-            </h2>
+        <main class="content">
+            <section id="about" class="hero">
+                <h1>Hey! I'm <span class="highlight">Pankaj Bashera</span></h1>
 
-            <!-- Intro -->
-            <div class="mb-12 border-l-4 border-violet-500 pl-6">
-                <p class="text-gray-300 leading-relaxed mb-4">
-                    <span class="text-violet-400">&gt;</span> Computer Science student specializing in AI and Web Dev
-                    with focus on building practical and scalable systems.
+                <p class="bio">
+                    I'm a B.Tech CSE (AIML) student focused on building real-world AI and web
+                    applications. I work primarily with C++ and Python, with a strong foundation in DSA and growing
+                    expertise in React and modern AI tools. <br /><br/>I've built projects like a AI Resume Analyzing
+                    system and Real Time Sentiment Analysis system, aiming to solve practical problems with clean,
+                    scalable solutions. Currently, I'm sharpening my problem-solving skills and exploring AI-driven
+                    products that can make a real impact.
                 </p>
-                <p class="text-gray-400 text-sm">
-                    Passionate about writing clean code, solving complex problems, and creating exceptional user
-                    experiences that drive business growth. Competitve Programmer by Hobby.
-                </p>
-            </div>
 
-            <!-- Work Experience -->
-            <!-- <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 text-violet-400">
-                    <span class="text-gray-500">//</span> WORK_EXPERIENCE
-                </h3>
-                <div class="space-y-6">
-                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
-                            <div>
-                                <h4 class="text-lg font-bold text-violet-400">SENIOR FULL-STACK DEVELOPER</h4>
-                                <p class="text-gray-400 text-sm">Tech Innovations Inc.</p>
-                            </div>
-                            <span class="text-gray-500 text-sm mt-2 md:mt-0">[2022 - PRESENT]</span>
+                <div class="action-buttons" style="margin-bottom: 2rem;">
+                    <a href="assets/resume.pdf" download class="contact-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Resume
+                    </a>
+                </div>
+
+                <div class="social-links">
+                    <a class="social-btn" href="https://github.com/Pankaj-Bashera" target="_blank">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                        GitHub
+                    </a>
+                    <span class="separator">|</span>
+                    <a class="social-btn" href="https://www.linkedin.com/in/pankajb1/" target="_blank">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <span class="separator">|</span>
+                    <a class="social-btn" href="https://x.com/PankajB9621" target="_blank">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+
+            <section id="education" class="projects">
+                <div class="section-header">
+                    <h2>
+                        <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                        Education
+                    </h2>
+                </div>
+                <div class="education-list">
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <h3>Lovely Professional University</h3>
+                            <span class="edu-date">2023 - Present</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Leading development of enterprise SaaS platform serving 50K+ users. Architected
-                            microservices infrastructure, improved performance by 40%, and mentored junior developers.
-                        </p>
+                        <p class="edu-degree">Bachelor of Technology in Computer Science and Engineering (AI & ML)</p>
                     </div>
-
-                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
-                            <div>
-                                <h4 class="text-lg font-bold text-violet-400">FULL-STACK DEVELOPER</h4>
-                                <p class="text-gray-400 text-sm">Digital Solutions Ltd.</p>
-                            </div>
-                            <span class="text-gray-500 text-sm mt-2 md:mt-0">[2020 - 2022]</span>
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <h3>Inspiration Public School</h3>
+                            <span class="edu-date">2021 - 2022</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Developed client-facing web applications using React and Node.js. Implemented CI/CD
-                            pipelines and reduced deployment time by 60%.
-                        </p>
+                        <p class="edu-degree">Intermediate</p>
                     </div>
-
-                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
-                            <div>
-                                <h4 class="text-lg font-bold text-violet-400">JUNIOR DEVELOPER</h4>
-                                <p class="text-gray-400 text-sm">StartUp Hub</p>
-                            </div>
-                            <span class="text-gray-500 text-sm mt-2 md:mt-0">[2019 - 2020]</span>
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <h3>Army Public School</h3>
+                            <span class="edu-date">2019 - 2020</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Built responsive web interfaces and RESTful APIs. Collaborated with design team to implement
-                            pixel-perfect UI components.
-                        </p>
+                        <p class="edu-degree">Matriculation</p>
                     </div>
                 </div>
-            </div> -->
+            </section>
 
-            <!-- Education -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 text-violet-400">
-                    <span class="text-gray-500">//</span> EDUCATION
-                </h3>
-                <div class="space-y-6">
-                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
-                        <div class="flex items-start space-x-4">
-                            <i data-lucide="graduation-cap" class="w-6 h-6 text-violet-400 mt-1"></i>
-                            <div class="flex-1">
-                                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
-                                    <div>
-                                        <h4 class="text-lg font-bold text-violet-400">B.Tech. COMPUTER SCIENCE &
-                                            ENGINEERING</h4>
-                                        <p class="text-gray-400 text-sm">Lovely Professional University</p>
-                                    </div>
-                                    <span class="text-yellow-500 text-sm mt-2 md:mt-0">[2023 - Present]</span>
+
+
+            <section id="skills" class="projects">
+                <div class="section-header">
+                    <h2>
+                        <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Skills
+                    </h2>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h3>Languages</h3>
+                        <div class="tags">
+                            <span class="tag tag-gin">C++</span>
+                            <span class="tag tag-golang">Python</span>
+                            <span class="tag tag-golang">JavaScript</span>
+                            <span class="tag tag-mauve">Java</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Technologies</h3>
+                        <div class="tags">
+                            <span class="tag tag-ai">React</span>
+                            <span class="tag tag-docker">Docker</span>
+                            <span class="tag tag-ai">Kubernetes</span>
+                            <span class="tag tag-security">Jira</span>
+                            <span class="tag tag-ai">Node.js</span>
+                            <span class="tag tag-security">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="projects">
+                <div class="section-header">
+                    <h2>
+                        <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+                        Featured Projects
+                    </h2>
+                </div>
+
+                <div class="project-grid">
+                    <!-- Project 1: FastPays -->
+                    <div class="project-card">
+                        <a href="https://nimivo.netlify.app/" target="_blank">
+                            <div class="card-image">
+                                <img src="assets/fastpays_app.png" alt="FastPays Preview">
+                            </div>
+                        </a>
+                        <div class="card-content">
+                            <h3 style="display: flex; align-items: center; justify-content: space-between;">
+                                FastPays 
+                                <div>
+                                    <a href="https://github.com/Pankaj-Bashera/FastPays" target="_blank" title="GitHub" style="color: inherit;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="https://nimivo.netlify.app/" target="_blank" title="Live Demo" style="margin-left: 8px; color: inherit;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+                                        </svg>
+                                    </a>
                                 </div>
-                                <p class="text-gray-400 text-sm">
-                                    Focus on Software Engineering and Machine Learning • CGPA: 9.4/10.0
-                                </p>
+                            </h3>
+                            <p>A sleek payment platform and invoice generator with real-time dashboard analytics.</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">react</span>
+                                <span class="tag tag-gin">web</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="bg-gray-950 border-2 border-violet-500/30 p-6">
-                        <div class="flex items-start space-x-4">
-                            <i data-lucide="award" class="w-6 h-6 text-violet-400 mt-1"></i>
-                            <div class="flex-1">
-                                <h4 class="text-lg font-bold text-violet-400">CERTIFICATIONS</h4>
-                                <ul class="text-gray-400 text-sm space-y-1 mt-2">
-                                    <li><span class="text-violet-400">•</span> AWS Certified Solutions Architect</li>
-                                    <li><span class="text-violet-400">•</span> Google Professional Cloud Developer</li>
-                                    <li><span class="text-violet-400">•</span> Meta Front-End Developer Professional
-                                    </li>
-                                </ul>
+                    <!-- Project 2: AI Resume Analyzer -->
+                    <div class="project-card">
+                        <a href="https://github.com/Pankaj-Bashera/ai-resume-analyzer" target="_blank">
+                            <div class="card-image">
+                                <img src="assets/resume_analyzer_app.png" alt="AI Resume Analyzer Preview">
                             </div>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-
-
-            <!-- Competitive Programming Stats -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 text-violet-400">
-                    <span class="text-gray-500">//</span> COMPETITIVE_PROGRAMMING
-                </h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- LeetCode -->
-                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6 hover:border-violet-500 transition">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-lg font-bold text-violet-400">LEETCODE</h4>
-                            <i data-lucide="trophy" class="w-5 h-5 text-yellow-500"></i>
-                        </div>
-                        <div id="leetcode-stats" class="space-y-2 text-sm">
-                            <div class="flex justify-center items-center py-4">
-                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-400"></div>
+                        </a>
+                        <div class="card-content">
+                            <h3 style="display: flex; align-items: center; justify-content: space-between;">
+                                AI Resume Analyzer 
+                                <div>
+                                    <a href="https://github.com/Pankaj-Bashera/ai-resume-analyzer" target="_blank" title="GitHub" style="color: inherit;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </h3>
+                            <p>An intelligent system that analyzes resumes against job requirements using AI for optimized ATS scoring.</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">ai</span>
+                                <span class="tag tag-golang">python</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Codeforces -->
-                    <div class="bg-gray-950 border-2 border-violet-500/30 p-6 hover:border-violet-500 transition">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-lg font-bold text-violet-400">CODEFORCES</h4>
-                            <i data-lucide="code-2" class="w-5 h-5 text-blue-500"></i>
-                        </div>
-                        <div id="codeforces-stats" class="space-y-2 text-sm">
-                            <div class="flex justify-center items-center py-4">
-                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-400"></div>
+                    <!-- Project 3: Sentimental Analysis -->
+                    <div class="project-card">
+                        <a href="https://github.com/Pankaj-Bashera/SentimentalAnalysis" target="_blank">
+                            <div class="card-image">
+                                <img src="assets/sentiment_analysis_app.png" alt="Sentimental Analysis Preview">
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- CodeChef -->
-                    <!-- <div class="bg-gray-950 border-2 border-violet-500/30 p-6 hover:border-violet-500 transition">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-lg font-bold text-violet-400">CODECHEF</h4>
-                            <i data-lucide="chef-hat" class="w-5 h-5 text-orange-500"></i>
-                        </div>
-                        <div id="codechef-stats" class="space-y-2 text-sm">
-                            <div class="flex justify-center items-center py-4">
-                                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-400"></div>
+                        </a>
+                        <div class="card-content">
+                            <h3 style="display: flex; align-items: center; justify-content: space-between;">
+                                Sentimental Analysis 
+                                <div>
+                                    <a href="https://github.com/Pankaj-Bashera/SentimentalAnalysis" target="_blank" title="GitHub" style="color: inherit;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </h3>
+                            <p>Real-time text analysis system mapping emotional sentiment across user inputs using machine learning.</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">ai</span>
+                                <span class="tag tag-golang">python</span>
                             </div>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-
-            <!-- Tech Stack -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6 text-violet-400">
-                    <span class="text-gray-500">//</span> TECH_STACK
-                </h3>
-
-                <div class="space-y-6">
-                    <!-- Frontend -->
-                    <div>
-                        <h4 class="text-sm font-bold text-violet-400 mb-3 flex items-center space-x-2">
-                            <i data-lucide="code" class="w-4 h-4"></i>
-                            <span>[FRONTEND]</span>
-                        </h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REACT</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">TYPESCRIPT</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">TAILWIND</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REDUX</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">JAVASCRIPT</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">HTML</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">CSS</span>
-                        </div>
-                    </div>
-
-                    <!-- Backend -->
-                    <div>
-                        <h4 class="text-sm font-bold text-violet-400 mb-3 flex items-center space-x-2">
-                            <i data-lucide="server" class="w-4 h-4"></i>
-                            <span>[BACKEND]</span>
-                        </h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">NODEJS</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">EXPRESS</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">PYTHON</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">DJANGO</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">POSTGRESQL</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">MONGODB</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REDIS</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">REST</span>
-                        </div>
-                    </div>
-
-                    <!-- DevOps & Tools -->
-                    <div>
-                        <h4 class="text-sm font-bold text-violet-400 mb-3 flex items-center space-x-2">
-                            <i data-lucide="cloud" class="w-4 h-4"></i>
-                            <span>[DEVOPS]</span>
-                        </h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">DOCKER</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">AWS</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">CI/CD</span>
-                            <span
-                                class="bg-violet-500/20 border border-violet-500/50 text-violet-300 px-3 py-1 text-sm font-bold">GITHUB</span>
                         </div>
                     </div>
                 </div>
+            </section>
+            <section id="certifications" class="projects">
+                <div class="section-header">
+                    <h2>
+                        <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                        Certifications
+                    </h2>
+                </div>
+                <div class="project-grid">
+                    <a href="https://coursera.org/share/c0deb681052e80885ff42696d19cf208" target="_blank" class="project-card cp-card cert-card">
+                        <div class="cert-image-preview"><img src="assets/Computer_communications.png" alt="Computer Communications Certificate Preview"></div>
+                        <div class="card-content">
+                            <h3>Computer Communications</h3>
+                            <p>Coursera</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">Verified</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.hackerrank.com/certificates/45db640591db" target="_blank" class="project-card cp-card cert-card">
+                        <div class="cert-image-preview"><img src="assets/problem_solving_cert.png" alt="Problem Solving Certificate Preview"></div>
+                        <div class="card-content">
+                            <h3>Problem Solving</h3>
+                            <p>HackerRank</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">Verified</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.hackerrank.com/certificates/b10260485c32" target="_blank" class="project-card cp-card cert-card">
+                        <div class="cert-image-preview"><img src="assets/java_cert.png" alt="Java Certificate Preview"></div>
+                        <div class="card-content">
+                            <h3>Java</h3>
+                            <p>HackerRank</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">Verified</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.udemy.com/certificate/UC-9dde640f-caee-4a18-adc8-c4230789e487/" target="_blank" class="project-card cp-card cert-card">
+                        <div class="cert-image-preview"><img src="assets/Python_BootCamp.png" alt="Python BootCamp Certificate Preview"></div>
+                        <div class="card-content">
+                            <h3>Python BootCamp</h3>
+                            <p>Udemy</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">Verified</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="cp" class="projects">
+                <div class="section-header">
+                    <h2>
+                        <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                        Competitive Programming
+                    </h2>
+                </div>
+                <div class="project-grid">
+                    <a href="https://leetcode.com/u/Pankaj-Bashera/" target="_blank" class="project-card cp-card">
+                        <div class="card-content">
+                            <h3>LeetCode</h3>
+                            <p>Max Rating: 1948 | Top 3.47%</p>
+                            <div class="tags">
+                                <span class="tag tag-golang">Knight</span>
+                                <span class="tag">900+ Solved</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://codeforces.com/profile/Pankaj_Bashera" target="_blank" class="project-card cp-card">
+                        <div class="card-content">
+                            <h3>Codeforces</h3>
+                            <p>Max Rating: 1214 | Pupil</p>
+                            <div class="tags">
+                                <span class="tag tag-security">Pupil</span>
+                                <span class="tag">70+ Contests</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://atcoder.jp/users/panku0101" target="_blank" class="project-card cp-card">
+                        <div class="card-content">
+                            <h3>AtCoder</h3>
+                            <p>Rating: 849 | ^ 6 Kyu</p>
+                            <div class="tags">
+                                <span class="tag tag-ai">Active</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://cses.fi/user/342962" target="_blank" class="project-card cp-card">
+                        <div class="card-content">
+                            <h3>CSES</h3>
+                            <p>User ID: 342962</p>
+                            <div class="tags">
+                                <span class="tag tag-docker">Active</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="training" class="projects">
+                <div class="section-header">
+                    <h2>
+                        <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        Training
+                    </h2>
+                </div>
+                <div class="training-card">
+                    <div class="training-content">
+                        <div class="edu-header" style="flex-direction: column; align-items: flex-start;">
+                            <h3 style="margin-bottom: 0.2rem;">Programming Pathsala</h3>
+                            <span class="edu-date">Lovely Professional University</span>
+                        </div>
+                        <p class="edu-degree" style="margin-bottom:0;">Intensive training focused on Competitive Programming and Real-World Problem Solving.</p>
+                        <div class="tags" style="margin-top: 1rem;">
+                            <span class="tag tag-golang">Competitive Programming</span>
+                            <span class="tag tag-ai">Problem Solving</span>
+                        </div>
+                    </div>
+                    <div class="training-image">
+                        <img src="assets/Training_cert.png" alt="Training Certificate">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="simple-footer">
+            <div class="footer-content">
+                <span class="copyright">&copy; 2026 Pankaj</span>
+                <div class="footer-links">
+                    <a href="https://github.com/Pankaj-Bashera" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg></a>
+                    <a href="https://www.linkedin.com/in/pankajb1/" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg></a>
+                    <a href="https://x.com/PankajB9621" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                        </svg></a>
+                </div>
             </div>
+        </footer>
+    </div>
+
+    <!-- Theme Color Menu -->
+    <div class="theme-menu-container">
+        <button class="theme-toggle-btn" aria-label="Toggle Theme Colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
+        <div class="theme-ring">
+            <button class="color-dot" data-idx="0" style="--angle: 0deg; background-color: #cba6f7;" title="Purple"></button>
+            <button class="color-dot" data-idx="1" style="--angle: 60deg; background-color: #89b4fa;" title="Blue"></button>
+            <button class="color-dot" data-idx="2" style="--angle: 120deg; background-color: #a6e3a1;" title="Green"></button>
+            <button class="color-dot" data-idx="3" style="--angle: 180deg; background-color: #f9e2af;" title="Yellow"></button>
+            <button class="color-dot" data-idx="4" style="--angle: 240deg; background-color: #fab387;" title="Orange"></button>
+            <button class="color-dot" data-idx="5" style="--angle: 300deg; background-color: #f38ba8;" title="Red"></button>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 px-6 grid-bg border-t-2 border-violet-500/30">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-violet-400">
-                <span class="text-gray-500">//</span> SELECTED_PROJECTS
-            </h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Project 1 -->
-                <div
-                    class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
-                    <div
-                        class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition">
-                        </div>
-                        <i data-lucide="shopping-cart" class="w-16 h-16 text-violet-400"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-violet-400">[AI_RESUME_ANALYSER]</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Uses AI to analyze the resume for job description.
-                        </p>
-                        <div class="flex items-center space-x-4 text-xs">
-                            <a href="#"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="external-link" class="w-4 h-4"></i>
-                                <span>DEMO</span>
-                            </a>
-                            <a href="https://github.com/Pankaj-Bashera/ai-resume-analyzer"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="github" class="w-4 h-4"></i>
-                                <span>CODE</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div
-                    class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
-                    <div
-                        class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition">
-                        </div>
-                        <i data-lucide="list-checks" class="w-16 h-16 text-violet-400"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-violet-400">[ML_ALGO_VISUALISER]</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Machine Learning Algorithm Visualisation in real time using custom datasets.
-                        </p>
-                        <div class="flex items-center space-x-4 text-xs">
-                            <a href="#"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="external-link" class="w-4 h-4"></i>
-                                <span>DEMO</span>
-                            </a>
-                            <a href="https://github.com/Pankaj-Bashera/ML_Algo_Visualiser"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="github" class="w-4 h-4"></i>
-                                <span>CODE</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div
-                    class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
-                    <div
-                        class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition">
-                        </div>
-                        <i data-lucide="bar-chart-3" class="w-16 h-16 text-violet-400"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-violet-400">[CP_BANK]</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Programming Problem Archive with interactive charts and comprehensive reports.
-                        </p>
-                        <div class="flex items-center space-x-4 text-xs">
-                            <a href="#"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="external-link" class="w-4 h-4"></i>
-                                <span>DEMO</span>
-                            </a>
-                            <a href="https://github.com/Pankaj-Bashera/CP-Bank"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="github" class="w-4 h-4"></i>
-                                <span>CODE</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div
-                    class="bg-gray-900 border-2 border-violet-500/30 overflow-hidden hover:border-violet-500 transition-all group">
-                    <div
-                        class="bg-gray-950 h-48 flex items-center justify-center border-b-2 border-violet-500/30 relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition">
-                        </div>
-                        <i data-lucide="users" class="w-16 h-16 text-violet-400"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-violet-400">[SENTIMENT_ANALYSIS]</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Sentiment analysis of social media posts.
-                        </p>
-                        <div class="flex items-center space-x-4 text-xs">
-                            <a href="#"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="external-link" class="w-4 h-4"></i>
-                                <span>DEMO</span>
-                            </a>
-                            <a href="https://github.com/Pankaj-Bashera/SentimentalAnalysis"
-                                class="flex items-center space-x-1 text-violet-400 hover:text-violet-300 transition">
-                                <i data-lucide="github" class="w-4 h-4"></i>
-                                <span>CODE</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 bg-gray-900 border-t-2 border-violet-500/30">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-violet-400">
-                <span class="text-gray-500">//</span> LET'S_CONNECT
-            </h2>
-            <p class="text-xl text-gray-400 mb-12">
-                <span class="text-violet-400">&gt;</span> OPEN FOR NEW PROJECTS AND COLLABORATIONS
-            </p>
-            <div class="flex flex-wrap items-center justify-center gap-6">
-                <a href="mailto:pankajbashera1211@gmail.com" target="_blank"
-                    class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                    <span>EMAIL</span>
-                </a>
-                <a href="https://www.linkedin.com/in/pankajb1" target="_blank"
-                    class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i>
-                    <span>LINKEDIN</span>
-                </a>
-                <a href="https://github.com/Pankaj-Bashera" target="_blank"
-                    class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
-                    <i data-lucide="github" class="w-5 h-5"></i>
-                    <span>GITHUB</span>
-                </a>
-                <a href="https://x.com/PankajB9621" target="_blank"
-                    class="flex items-center space-x-2 text-gray-300 hover:text-violet-400 transition border-2 border-violet-500/30 px-4 py-2 hover:border-violet-500">
-                    <i data-lucide="twitter" class="w-5 h-5"></i>
-                    <span>TWITTER</span>
-                </a>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <script>
-        lucide.createIcons();
-        const CP_CONFIG = {
-            leetcode: 'Pankaj-Bashera',
-            codeforces: 'Pankaj_Bashera',
-            codechef: 'pankajbashera1'
-        };
+        // Global Theme State
+        let currentRibbonRGB = '82, 39, 255'; // default requested purple
+        const themeContainer = document.querySelector('.theme-menu-container');
+        const themeToggle = document.querySelector('.theme-toggle-btn');
+        const colorDots = document.querySelectorAll('.color-dot');
 
-        // 1. LeetCode: https://leetcode-api-faisalshohag.vercel.app/{username}
-        // 2. Codeforces: https://codeforces.com/api/user.info?handles={username}
-        // 3. CodeChef: https://codechef-api.vercel.app/handle/{username}
+        const palette = [
+            { rgb: '203, 166, 247', hex: '#cba6f7' }, // 0 Purple
+            { rgb: '137, 180, 250', hex: '#89b4fa' }, // 1 Blue
+            { rgb: '166, 227, 161', hex: '#a6e3a1' }, // 2 Green
+            { rgb: '249, 226, 175', hex: '#f9e2af' }, // 3 Yellow
+            { rgb: '250, 179, 135', hex: '#fab387' }, // 4 Orange
+            { rgb: '243, 139, 168', hex: '#f38ba8' }  // 5 Red
+        ];
 
-        // ============================================
-        // FETCH LEETCODE STATS
-        // ============================================
-        async function fetchLeetCodeStats() {
-            const container = document.getElementById('leetcode-stats');
-            try {
-                console.log('Fetching LeetCode stats for:', CP_CONFIG.leetcode);
-                const response = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${CP_CONFIG.leetcode}`);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                console.log('LeetCode data:', data);
-
-                container.innerHTML = `
-                    <div class="flex justify-between text-gray-400">
-                        <span>Problems Solved:</span>
-                        <span class="text-violet-300 font-bold">${data.totalSolved || 0}</span>
-                    </div>
-                    <div class="flex justify-between text-gray-400">
-                        <span>Easy:</span>
-                        <span class="text-green-400 font-bold">${data.easySolved || 0}</span>
-                    </div>
-                    <div class="flex justify-between text-gray-400">
-                        <span>Medium:</span>
-                        <span class="text-yellow-400 font-bold">${data.mediumSolved || 0}</span>
-                    </div>
-                    <div class="flex justify-between text-gray-400">
-                        <span>Hard:</span>
-                        <span class="text-red-400 font-bold">${data.hardSolved || 0}</span>
-                    </div>
-                `;
-            } catch (error) {
-                console.error('LeetCode Error:', error);
-                container.innerHTML = `
-                    <div class="text-gray-500 text-center text-xs">
-                        <div class="mb-1">Unable to load stats</div>
-                        <div class="text-violet-400 text-xs">Username: ${CP_CONFIG.leetcode}</div>
-                    </div>
-                `;
-            }
-        }
-
-        // ============================================
-        // FETCH CODEFORCES STATS
-        // ============================================
-        async function fetchCodeforcesStats() {
-            const container = document.getElementById('codeforces-stats');
-            try {
-                console.log('Fetching Codeforces stats for:', CP_CONFIG.codeforces);
-                const response = await fetch(`https://codeforces.com/api/user.info?handles=${CP_CONFIG.codeforces}`);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                console.log('Codeforces data:', data);
-
-                if (data.status === 'OK' && data.result.length > 0) {
-                    const user = data.result[0];
-                    const rankColor = user.rank === 'specialist' ? 'text-blue-400' :
-                        user.rank === 'pupil' ? 'text-green-400' :
-                            'text-grey-300';
-
-                    container.innerHTML = `
-                        <div class="flex justify-between text-gray-400">
-                            <span>Rating:</span>
-                            <span class="text-violet-300 font-bold">${user.rating || 'Unrated'}</span>
-                        </div>
-                        <div class="flex justify-between text-gray-400">
-                            <span>Max Rating:</span>
-                            <span class="text-violet-300 font-bold">${user.maxRating || 'N/A'}</span>
-                        </div>
-                        <div class="flex justify-between text-gray-400">
-                            <span>Rank:</span>
-                            <span class="${rankColor} font-bold capitalize">${user.rank || 'Unrated'}</span>
-                        </div>
-                    `;
-                } else {
-                    throw new Error('User not found in response');
-                }
-            } catch (error) {
-                console.error('Codeforces Error:', error);
-                container.innerHTML = `
-                    <div class="text-gray-500 text-center text-xs">
-                        <div class="mb-1">Unable to load stats</div>
-                        <div class="text-violet-400 text-xs">Username: ${CP_CONFIG.codeforces}</div>
-                    </div>
-                `;
-            }
-        }
-
-        // ============================================
-        // FETCH CODECHEF STATS (LOCAL GITHUB API VERSION)
-        // ============================================
-        // async function fetchCodeChefStats() {
-        //     const container = document.getElementById('codechef-stats');
-
-        //     try {
-        //         console.log('Fetching CodeChef stats for:', CP_CONFIG.codechef);
-
-        //         const res = await fetch("http://localhost:5000/user-stats", {
-        //             method: "POST",
-        //             headers: {
-        //                 "Content-Type": "application/json"
-        //             },
-        //             body: JSON.stringify({
-        //                 username: CP_CONFIG.codechef
-        //             })
-        //         });
-
-        //         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        //         const data = await res.json();
-        //         console.log("CodeChef API:", data);
-
-        //         if (!data.username) throw new Error("Invalid response");
-
-        //         container.innerHTML = `
-        //     <div class="flex justify-between text-gray-400">
-        //         <span>Rating:</span>
-        //         <span class="text-violet-300 font-bold">${data.rating ?? 'N/A'}</span>
-        //     </div>
-
-        //     <div class="flex justify-between text-gray-400">
-        //         <span>Global Rank:</span>
-        //         <span class="text-violet-300 font-bold">${data.global_rank ?? 'N/A'}</span>
-        //     </div>
-
-        //     <div class="flex justify-between text-gray-400">
-        //         <span>Country Rank:</span>
-        //         <span class="text-violet-300 font-bold">${data.country_rank ?? 'N/A'}</span>
-        //     </div>
-
-        //     <div class="flex justify-between text-gray-400">
-        //         <span>Stars:</span>
-        //         <span class="text-yellow-400 font-bold">${data.total_stars ?? 0}</span>
-        //     </div>
-        // `;
-        //     } catch (err) {
-        //         console.error("CodeChef Error:", err);
-        //         container.innerHTML = `
-        //     <div class="text-gray-500 text-center text-xs">
-        //         <div class="mb-1">Unable to load CodeChef stats</div>
-        //         <div class="text-violet-400 text-xs">Username: ${CP_CONFIG.codechef}</div>
-        //         <div class="text-red-400 text-xs">${err.message}</div>
-        //     </div>
-        // `;
-        //     }
-        // }
-
-
-
-        // ============================================
-        // INITIALIZE ON PAGE LOAD
-        // ============================================
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Page loaded. Starting to fetch CP stats...');
-            console.log('Configuration:', CP_CONFIG);
-
-            // Fetch all stats
-            fetchLeetCodeStats();
-            fetchCodeforcesStats();
-            // fetchCodeChefStats();
+        themeToggle.addEventListener('click', () => {
+            themeContainer.classList.toggle('open');
         });
+
+        colorDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const idx = parseInt(dot.getAttribute('data-idx'));
+                const selected = palette[idx];
+                const opposite = palette[(idx + 3) % 6];
+                
+                currentRibbonRGB = selected.rgb;
+                // Set the opposite color for component hover states globally
+                document.documentElement.style.setProperty('--hover-edge-color', opposite.hex);
+                document.documentElement.style.setProperty('--hover-glow-color', `rgba(${opposite.rgb}, 0.2)`);
+                
+                themeContainer.classList.remove('open');
+            });
+        });
+
+        // Setup Side Decorations
+        const decorItems = document.querySelectorAll('.decor-item');
+
+        // Simple cursor blinking animation for logo
+        const cursor = document.querySelector('.cursor');
+        setInterval(() => {
+            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }, 500);
+
+        // Glassy navbar on scroll
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active link switching
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = 'about'; // Default to first section
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Interactive Cursor Ribbon & Sparks
+        const canvas = document.getElementById('interactionCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let points = [];
+        const maxPoints = 25;
+        let sparks = [];
+
+        window.addEventListener('mousemove', (e) => {
+            points.push({ x: e.clientX, y: e.clientY, age: 0 });
+        });
+
+        window.addEventListener('click', (e) => {
+            for (let i = 0; i < 15; i++) {
+                const angle = (Math.PI * 2 * i) / 15 + Math.random() * 0.5;
+                const velocity = 3 + Math.random() * 3;
+                sparks.push({
+                    x: e.clientX,
+                    y: e.clientY,
+                    vx: Math.cos(angle) * velocity,
+                    vy: Math.sin(angle) * velocity,
+                    life: 1,
+                    size: 2 + Math.random() * 3
+                });
+            }
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw Ribbon
+            if (points.length > 1) {
+                for (let i = 1; i < points.length; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(points[i - 1].x, points[i - 1].y);
+                    ctx.lineTo(points[i].x, points[i].y);
+                    
+                    const ratio = i / points.length;
+                    const spindle = Math.sin(ratio * Math.PI);
+                    ctx.lineWidth = 15 * spindle; 
+                    ctx.strokeStyle = `rgba(${currentRibbonRGB}, ${ratio})`;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    ctx.stroke();
+                }
+            }
+
+            // Update Ribbon points
+            for (let i = 0; i < points.length; i++) {
+                points[i].age++;
+            }
+            while (points.length > 0 && points[0].age > maxPoints) {
+                points.shift();
+            }
+
+            // Update and draw sparks
+            for (let i = sparks.length - 1; i >= 0; i--) {
+                let spark = sparks[i];
+                spark.x += spark.vx;
+                spark.y += spark.vy;
+                spark.vy += 0.15; // slightly gravity
+                spark.life -= 0.03; // Fade out
+
+                if (spark.life <= 0) {
+                    sparks.splice(i, 1);
+                    continue;
+                }
+
+                ctx.beginPath();
+                ctx.arc(spark.x, spark.y, spark.size * spark.life, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${currentRibbonRGB}, ${spark.life})`;
+                ctx.fill();
+            }
+
+            // Continuous Random Wobble for Side Decorations
+            const time = Date.now() * 0.001;
+            decorItems.forEach((item, index) => {
+                const speedBase = parseFloat(item.getAttribute('data-speed')) * 10;
+                const offsetX = Math.sin(time * 0.8 + index) * 25;
+                const offsetY = Math.cos(time * 0.6 + index * 2) * 35 * Math.abs(speedBase);
+                const rotate = Math.sin(time * 0.4 + index) * 20;
+                item.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rotate}deg)`;
+            });
+
+            requestAnimationFrame(animate);
+        }
+        animate();
     </script>
 </body>
 
